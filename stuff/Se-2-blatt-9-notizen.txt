@@ -1,0 +1,30 @@
+- via regex prüfen ob eine angabe sich als geldbetrag darstellen lässt
+- geldbetrag als int in cent speichern, entsprechende umrechnungen fuer die gewünschte repräsentation vornehmen
+- parsen: is regex true? -> str.strip -> Integer.parse
+
+
+add( Geldbetrag preis)
+add( String preis)
+add( int preis)
+
+sub( Geldbetrag preis)
+sub( String preis)
+sub( int preis)
+
+mul( int faktor)
+
+set( int preis)
+set( String preis)
+set(Geldbetrag b)
+
+int compareTo( int preis)
+int compareTo( String preis)
+int compareTo( Geldbetrag preis)
+
+String toString()
+static String toString(int)
+
+static Geldbetrag parse( String preis)
+static int parseToInt( String preis)
+
+
