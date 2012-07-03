@@ -25,7 +25,7 @@ import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.barzahlung.BarzahlungsWe
  */
 public class PlatzVerkaufsWerkzeug
 {
-    private int _ausgewaehlterGesamtbetrag;
+    private int _ausgewaehlterGesamtbetrag; // TODO GB
     // Die aktuelle Vorstellung, deren Plätze angezeigt werden. Kann null sein.
     private Vorstellung _vorstellung;
 
@@ -151,7 +151,7 @@ public class PlatzVerkaufsWerkzeug
 
         if (istVerkaufenMoeglich(plaetze))
         {
-            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);
+            int preis = _vorstellung.getPreisFuerPlaetze(plaetze);//TODO Geldbetrag
             _ui.getPreisLabel().setText("Gesamtpreis: " + preis + " Eurocent");
             _ausgewaehlterGesamtbetrag = preis;
         }

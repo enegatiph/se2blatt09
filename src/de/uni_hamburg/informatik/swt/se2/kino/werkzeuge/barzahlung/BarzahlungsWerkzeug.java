@@ -32,7 +32,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
 {
 
     private BarzahlungsWerkzeugUI _ui;
-    private int _preis;
+    private int _preis; //TODO zu gelbetrag
     private boolean _barzahlungErfolgreich;
 
     /**
@@ -50,9 +50,9 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * Startet den Barzahlungsvorgang. Die UI wird angezeigt. Der Programmfluss
      * kehrt erst nach dem Beenden des Bezahlvorgangs an den Aufrufer zurück.
      */
-    public void fuehreBarzahlungDurch(int preis)
+    public void fuehreBarzahlungDurch(int preis) // TODO GB
     {
-        _preis = preis;
+        _preis = preis; // TODO GB
         setzeAnfangsstatus();
         _ui.zeigeAn();
     }
@@ -257,9 +257,9 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * 
      * @param eingabeBetrag Ein eingegebener Betrag.
      */
-    private void setzeOKButtonStatus(int eingabeBetrag)
+    private void setzeOKButtonStatus(int eingabeBetrag) // TODO GB
     {
-        if (eingabeBetrag >= _preis)
+        if (eingabeBetrag >= _preis) // TODO GB
         {
             _ui.getGeldErhaltenButton().setEnabled(true);
         }
@@ -276,9 +276,9 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * 
      * @param eingabeBetrag ein eingegebener Betrag
      */
-    private void setzeRestbetrag(int eingabeBetrag)
+    private void setzeRestbetrag(int eingabeBetrag) // TODO GB
     {
-        int differenz = eingabeBetrag - _preis;
+        int differenz = eingabeBetrag - _preis; // TODO GB
         _ui.getRestTextfeld().setText("" + differenz);
         if (eingabeBetrag < _preis)
         {
