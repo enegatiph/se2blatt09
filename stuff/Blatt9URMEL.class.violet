@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.7.0_05" class="java.beans.XMLDecoder">
+<java version="1.6.0_22" class="java.beans.XMLDecoder">
  <object class="com.horstmann.violet.ClassDiagramGraph">
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode0">
+   <object id="ClassNode0" class="com.horstmann.violet.ClassNode">
     <void property="attributes">
      <void property="text">
       <string>int _preis</string>
@@ -10,24 +10,14 @@
     </void>
     <void property="methods">
      <void property="text">
-      <string>add( Geldbetrag preis)
-add( String preis)
-add( int preis)
-sub( Geldbetrag preis)
-sub( String preis)
-sub( int preis)
-mul( int faktor)
-set( int preis)
-set( String preis)
-set(Geldbetrag b)
-int compareTo( int preis)
-int compareTo( String preis)
+      <string>Geldbetrag add( Geldbetrag preis)
+Geldbetrag  sub( Geldbetrag preis)
+Geldbetrag  mul( int faktor)
 int compareTo( Geldbetrag preis)
 String toString()
-static String toString(int)
 static Geldbetrag parse( String preis)
-static int parseToInt( String preis)
-boolean equals(Geldbetrag preis)</string>
+boolean equals(Object preis)
+int hashCode()</string>
      </void>
     </void>
     <void property="name">
@@ -36,93 +26,45 @@ boolean equals(Geldbetrag preis)</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double0">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double0">
-       <void class="java.awt.geom.Point2D$Double" method="getField">
-        <string>y</string>
-        <void method="set">
-         <object idref="Point2D$Double0">
-          <void method="setLocation">
-           <double>680.0</double>
-           <double>222.0</double>
-          </void>
-         </object>
-         <double>222.0</double>
-        </void>
-       </void>
-      </object>
-      <double>680.0</double>
-     </void>
+   <object class="java.awt.geom.Point2D$Double">
+    <void method="setLocation">
+     <double>680.0</double>
+     <double>222.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode1">
+   <object id="ClassNode1" class="com.horstmann.violet.ClassNode">
     <void property="name">
      <void property="text">
       <string>Platzverkaufswerkzeug</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double1">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double1">
-       <void class="java.awt.geom.Point2D$Double" method="getField">
-        <string>y</string>
-        <void method="set">
-         <object idref="Point2D$Double1">
-          <void method="setLocation">
-           <double>538.0</double>
-           <double>73.0</double>
-          </void>
-         </object>
-         <double>73.0</double>
-        </void>
-       </void>
-      </object>
-      <double>538.0</double>
-     </void>
+   <object class="java.awt.geom.Point2D$Double">
+    <void method="setLocation">
+     <double>538.0</double>
+     <double>73.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode2">
+   <object id="ClassNode2" class="com.horstmann.violet.ClassNode">
     <void property="name">
      <void property="text">
       <string>Barzahlungswerkzeug</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double2">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double2">
-       <void class="java.awt.geom.Point2D$Double" method="getField">
-        <string>y</string>
-        <void method="set">
-         <object idref="Point2D$Double2">
-          <void method="setLocation">
-           <double>898.0</double>
-           <double>73.0</double>
-          </void>
-         </object>
-         <double>73.0</double>
-        </void>
-       </void>
-      </object>
-      <double>898.0</double>
-     </void>
+   <object class="java.awt.geom.Point2D$Double">
+    <void method="setLocation">
+     <double>898.0</double>
+     <double>73.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode3">
+   <object id="ClassNode3" class="com.horstmann.violet.ClassNode">
     <void property="methods">
      <void property="text">
       <string>...</string>
@@ -134,31 +76,15 @@ boolean equals(Geldbetrag preis)</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double3">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double3">
-       <void class="java.awt.geom.Point2D$Double" method="getField">
-        <string>y</string>
-        <void method="set">
-         <object idref="Point2D$Double3">
-          <void method="setLocation">
-           <double>588.0</double>
-           <double>765.0</double>
-          </void>
-         </object>
-         <double>765.0</double>
-        </void>
-       </void>
-      </object>
-      <double>588.0</double>
-     </void>
+   <object class="java.awt.geom.Point2D$Double">
+    <void method="setLocation">
+     <double>588.0</double>
+     <double>765.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode4">
+   <object id="ClassNode4" class="com.horstmann.violet.ClassNode">
     <void property="methods">
      <void property="text">
       <string>...</string>
@@ -170,31 +96,15 @@ boolean equals(Geldbetrag preis)</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double4">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double4">
-       <void class="java.awt.geom.Point2D$Double" method="getField">
-        <string>y</string>
-        <void method="set">
-         <object idref="Point2D$Double4">
-          <void method="setLocation">
-           <double>736.0</double>
-           <double>697.0</double>
-          </void>
-         </object>
-         <double>697.0</double>
-        </void>
-       </void>
-      </object>
-      <double>736.0</double>
-     </void>
+   <object class="java.awt.geom.Point2D$Double">
+    <void method="setLocation">
+     <double>736.0</double>
+     <double>697.0</double>
     </void>
    </object>
   </void>
   <void method="addNode">
-   <object class="com.horstmann.violet.ClassNode" id="ClassNode5">
+   <object id="ClassNode5" class="com.horstmann.violet.ClassNode">
     <void property="methods">
      <void property="text">
       <string>...</string>
@@ -206,26 +116,10 @@ boolean equals(Geldbetrag preis)</string>
      </void>
     </void>
    </object>
-   <object class="java.awt.geom.Point2D$Double" id="Point2D$Double5">
-    <void class="java.awt.geom.Point2D$Double" method="getField">
-     <string>x</string>
-     <void method="set">
-      <object idref="Point2D$Double5">
-       <void class="java.awt.geom.Point2D$Double" method="getField">
-        <string>y</string>
-        <void method="set">
-         <object idref="Point2D$Double5">
-          <void method="setLocation">
-           <double>871.0</double>
-           <double>770.0</double>
-          </void>
-         </object>
-         <double>770.0</double>
-        </void>
-       </void>
-      </object>
-      <double>871.0</double>
-     </void>
+   <object class="java.awt.geom.Point2D$Double">
+    <void method="setLocation">
+     <double>871.0</double>
+     <double>770.0</double>
     </void>
    </object>
   </void>
