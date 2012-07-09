@@ -36,16 +36,16 @@ public class GeldbetragTest {
         assertEquals( new Geldbetrag(3500), g1.add(g2));
 	}
 	
-	/*
 	@Test
 	public void testeSub()
 	{
 		Geldbetrag g1 = new Geldbetrag(1500);
 		Geldbetrag g2 = new Geldbetrag(2000);
         assertEquals( new Geldbetrag(500), g2.sub(g1));
-        assertEquals( new Geldbetrag(500), g1.sub(1000));
+        assertEquals( new Geldbetrag(500), g1.sub(new Geldbetrag(1000)));
 	}
 
+	/*
 	@Test
 	public void testeMul()
 	{

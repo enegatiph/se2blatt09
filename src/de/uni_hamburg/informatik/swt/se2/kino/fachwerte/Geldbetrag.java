@@ -78,5 +78,21 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return new Geldbetrag(_betrag + g.toInt());
 	}
 	
+	/**
+	 * Subtrahiert zwei Geldbeträge.
+	 * 
+	 * @param: g
+	 *    Geldbetrag welcher mit diesem verrechnet werden soll.
+	 * @reqiure:
+	 *   g != null
+	 * @ensure:
+	 *    new Geldbetrag(this.toInt() - g.toInt()).equals(this.sub(g));
+	 */
+	public Geldbetrag sub(Geldbetrag g)
+	{
+		assert g != null : "Vorbedingung veletzt g != null";
+		
+		return new Geldbetrag(_betrag - g.toInt());
+	}
 	
 }
