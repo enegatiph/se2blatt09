@@ -31,10 +31,12 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		_betrag = betrag;
 	}
 	
-	private int toInt()
+	public int toInt()
 	{
 		return _betrag;
 	}
+	
+	
 	
 	
 }
