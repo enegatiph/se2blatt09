@@ -14,7 +14,7 @@ public class GeldbetragTest {
 // wenn oder {1,8} und wenn die zahl zu gross ist gleich Integer.MAX_VALUE setzen
 // methode istgueltig
 
-// 1. tests verbessern
+// DONE 1. tests verbessern
 // 2. klasse verbessern
 // 3. refactoring
 	
@@ -27,7 +27,7 @@ public class GeldbetragTest {
         assertTrue(g2.compareTo(g1) < 0);
         assertTrue(g1.compareTo(g1) == 0);
 	}
-	/*
+	
 	@Test
 	public void testeAdd()
 	{
@@ -36,6 +36,7 @@ public class GeldbetragTest {
         assertEquals( new Geldbetrag(3500), g1.add(g2));
 	}
 	
+	/*
 	@Test
 	public void testeSub()
 	{

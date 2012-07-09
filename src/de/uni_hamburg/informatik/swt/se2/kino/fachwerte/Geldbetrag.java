@@ -10,6 +10,8 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 {
 	final int _betrag;
 	
+	// es sollten noch exceptions abgefangen werden wenn bspw. 
+	// eine zahl zu groß fuer nen Integer ist.
 
 	/**
 	 * @ensure:
@@ -42,6 +44,22 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return _betrag - g.toInt();
 	}
 	
+	/**
+	 * Addiert zwei Geldbeträge.
+	 * 
+	 * @param: g
+	 *    Geldbetrag welcher mit diesem verrechnet werden soll.
+	 * @reqiure:
+	 *   g != null
+	 * @ensure:
+	 *    new Geldbetrag(this.toInt() + g.toInt()).equals(this.add(g));
+	 */
+	public Geldbetrag add(Geldbetrag g)
+	{
+		assert g != null : "Vorbedingung veletzt g != null";
+		
+		return new Geldbetrag(_betrag + g.toInt());
+	}
 	
 	
 }
