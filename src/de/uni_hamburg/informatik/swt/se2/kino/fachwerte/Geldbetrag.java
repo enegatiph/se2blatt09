@@ -95,4 +95,16 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return new Geldbetrag(_betrag - g.toInt());
 	}
 	
+	/**
+	 * Multipliziert diesen Geldbetrag mit einer Ganzzahl als Faktor.
+	 * 
+	 * @param: a
+	 *   Faktor mit welchem dieser Geldbetrag verrechnet werden soll.
+	 * @ensure:
+	 *    new Geldbetrag(a * this.toInt()).equals(a * this.sub(g));
+	 */
+	public Geldbetrag mul(int a)
+	{
+		return new Geldbetrag(a * _betrag);
+	}
 }

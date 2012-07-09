@@ -45,13 +45,14 @@ public class GeldbetragTest {
         assertEquals( new Geldbetrag(500), g1.sub(new Geldbetrag(1000)));
 	}
 
-	/*
 	@Test
 	public void testeMul()
 	{
 		Geldbetrag g1 = new Geldbetrag(1500);
         assertEquals( new Geldbetrag(7500), g1.mul(5));
 	}
+	
+	/*
 
 	@Test
 	public void testeToString()
