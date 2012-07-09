@@ -13,9 +13,10 @@ public class GeldbetragTest {
 // regex: (-?\\d{1,7})(,(\\d{0,2}))?
 // wenn oder {1,8} und wenn die zahl zu gross ist gleich Integer.MAX_VALUE setzen
 // methode istgueltig
-	
-	
-	
+
+// 1. tests verbessern
+// 2. klasse verbessern
+// 3. refactoring
 	
 	@Test
 	void testeCompareTo()
@@ -42,7 +43,6 @@ public class GeldbetragTest {
 		Geldbetrag g2 = new Geldbetrag(2000);
         assertEquals( new Geldbetrag(500), g2.sub(g1));
         assertEquals( new Geldbetrag(500), g1.sub(1000));
-        assertEquals( new Geldbetrag(-100), g1.sub("16,00"));
 	}
 
 	@Test
@@ -55,34 +55,47 @@ public class GeldbetragTest {
 	@Test
 	void testeToString()
 	{
-		Geldbetrag g1 = new Geldbetrag(1500);
-        assertEquals( "15,00", g1.toString());
-        // 99c, 7cent, 0cent, randfaelle halt, negative werte, 008,3 eur, 
+        assertEquals("15,00", new Geldbetrag(1500).toString());
+        assertEquals("0,07", new Geldbetrag(7).toString());
+        assertEquals("0,99", new Geldbetrag(99).toString());
+        assertEquals("0", new Geldbetrag(0).toString());
+        assertEquals("0", new Geldbetrag(-0).toString());
+        assertEquals("-0,99", new Geldbetrag(-99).toString());
+        assertEquals("-0,07", new Geldbetrag(-7).toString());
+        assertEquals("-15,00", new Geldbetrag(-1500).toString());
 	}
 
 	@Test
-	void testeToInt() // rm
+	void testeParse()
 	{
-		Geldbetrag g1 = new Geldbetrag(1500);
-        assertEquals( 1500, g1.toInt());
-	}
-
-	@Test
-	void testeKonstruktoren()
-	{
-		Geldbetrag g1 = new Geldbetrag(1500);
-		Geldbetrag g2 = new Geldbetrag("200,00");
-		Geldbetrag g3 = new Geldbetrag("700");
-		assertEquals( new Geldbetrag(1500), g1.toInt());
-		assertEquals( new Geldbetrag(20000), g1.toInt());
-		assertEquals( new Geldbetrag(70000), g1.toInt());
+		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15,00"));
+		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15,0"));
+		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15"));
+		assertEquals(new Geldbetrag(7), Geldbetrag.parse("0,07"));
+		assertEquals(new Geldbetrag(7), Geldbetrag.parse("00,07"));
+		assertEquals(new Geldbetrag(7), Geldbetrag.parse("07"));
+		assertEquals(new Geldbetrag(7), Geldbetrag.parse("7"));
+		assertEquals(new Geldbetrag(99), Geldbetrag.parse("0,99"));
+		assertEquals(new Geldbetrag(99), Geldbetrag.parse("00,99"));
+		assertEquals(new Geldbetrag(99), Geldbetrag.parse("099"));
+		assertEquals(new Geldbetrag(99), Geldbetrag.parse("99"));
+		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0"));
+		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0000000"));
+		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0,0"));
+		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0,00"));
+		assertEquals(new Geldbetrag(0), Geldbetrag.parse("-0"));
+		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-0,99"));
+		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-00,99"));
+		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-099"));
+		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-99"));
 		// test mit 1, 2, und 0 kommastellen
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	void testeKonstruktorParse()
 	{
-		Geldbetrag g1 = new Geldbetrag("Peter");
+		Geldbetrag.parse("Peter");
+		
 	}
 	
 	@Test
