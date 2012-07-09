@@ -36,6 +36,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return _betrag;
 	}
 	
+	@Override
+	public int compareTo(Geldbetrag g)
+	{
+		return _betrag - g.toInt();
+	}
 	
 	
 	
