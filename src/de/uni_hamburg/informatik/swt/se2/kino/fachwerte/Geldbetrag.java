@@ -9,6 +9,7 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 public final class Geldbetrag implements Comparable<Geldbetrag>
 {
 	final int _betrag;
+	
 
 	/**
 	 * @ensure:
@@ -29,5 +30,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	{
 		_betrag = betrag;
 	}
+	
+	private int toInt()
+	{
+		return _betrag;
+	}
+	
 	
 }
