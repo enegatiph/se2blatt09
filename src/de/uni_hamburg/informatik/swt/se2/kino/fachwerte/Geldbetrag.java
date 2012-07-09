@@ -44,6 +44,23 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return _betrag - g.toInt();
 	}
 	
+	@Override
+	public boolean equals(Object g)
+	{
+		boolean result = false;
+		if((g instanceof Geldbetrag) && (_betrag == ((Geldbetrag) g).toInt()))
+		{
+			result = true;
+		}
+		return result;
+	}
+	
+	@Override
+	public int hashCode()
+	{
+		return _betrag % 100;
+	}
+	
 	/**
 	 * Addiert zwei Geldbeträge.
 	 * 
