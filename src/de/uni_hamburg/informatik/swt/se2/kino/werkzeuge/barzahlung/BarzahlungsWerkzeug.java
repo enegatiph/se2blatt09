@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import de.uni_hamburg.informatik.swt.se2.kino.werkzeuge.BeobachtbaresSubWerkzeug;
 
 /**
@@ -32,7 +33,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
 {
 
     private BarzahlungsWerkzeugUI _ui;
-    private int _preis; //TODO zu gelbetrag
+    private Geldbetrag _preis; //TODO zu gelbetrag
     private boolean _barzahlungErfolgreich;
 
     /**
@@ -50,7 +51,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * Startet den Barzahlungsvorgang. Die UI wird angezeigt. Der Programmfluss
      * kehrt erst nach dem Beenden des Bezahlvorgangs an den Aufrufer zurück.
      */
-    public void fuehreBarzahlungDurch(int preis) // TODO GB
+    public void fuehreBarzahlungDurch(Geldbetrag preis) // TODO GB
     {
         _preis = preis; // TODO GB
         setzeAnfangsstatus();
@@ -179,7 +180,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
         setzeFehlermarkierung(false);
         setzePreis();
         loescheGegebenbetrag();
-        int eingabeBetrag = 0;
+        Geldbetrag eingabeBetrag = new Geldbetrag(0);
         setzeRestbetrag(eingabeBetrag);
         setzeOKButtonStatus(eingabeBetrag);
     }
@@ -200,7 +201,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
         if (istGueltig(eingabe))
         {
             setzeFehlermarkierung(false);
-            int eingabeBetrag = Integer.valueOf(eingabe);
+            Geldbetrag eingabeBetrag = new Geldbetrag(Integer.valueOf(eingabe));
             setzeRestbetrag(eingabeBetrag);
             setzeOKButtonStatus(eingabeBetrag);
         }
@@ -257,9 +258,9 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * 
      * @param eingabeBetrag Ein eingegebener Betrag.
      */
-    private void setzeOKButtonStatus(int eingabeBetrag) // TODO GB
+    private void setzeOKButtonStatus(Geldbetrag eingabeBetrag) // TODO GB
     {
-        if (eingabeBetrag >= _preis) // TODO GB
+        if (eingabeBetrag.compareTo(_preis) >= 0) // TODO GB
         {
             _ui.getGeldErhaltenButton().setEnabled(true);
         }
@@ -276,11 +277,11 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * 
      * @param eingabeBetrag ein eingegebener Betrag
      */
-    private void setzeRestbetrag(int eingabeBetrag) // TODO GB
+    private void setzeRestbetrag(Geldbetrag eingabeBetrag) // TODO GB
     {
-        int differenz = eingabeBetrag - _preis; // TODO GB
+        Geldbetrag differenz = eingabeBetrag.sub(_preis); // TODO GB
         _ui.getRestTextfeld().setText("" + differenz);
-        if (eingabeBetrag < _preis)
+        if (eingabeBetrag.compareTo(_preis) < 0)
         {
             _ui.markiereRestTextfeld(true);
         }
