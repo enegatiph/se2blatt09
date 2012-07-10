@@ -71,6 +71,7 @@ public class GeldbetragTest {
 	{
 		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15,00"));
 		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15,0"));
+		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15,"));
 		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15"));
 		assertEquals(new Geldbetrag(7), Geldbetrag.parse("0,07"));
 		assertEquals(new Geldbetrag(7), Geldbetrag.parse("00,07"));

@@ -204,6 +204,18 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return s.matches("^(-|\\+)?\\d+,\\d{1}$");
 	}
 	
+	/**
+	 * Überprüft ob ein String genau kein Zeichen nach einem Komma hat.
+	 * (Vorzeichen ist erlaubt)
+	 *  
+	 * @param s:
+	 *    zu prüfender String
+	 */
+	private static boolean hatKeineNachkommaStelle(String s)
+	{
+		return s.matches("^(-|\\+)?\\d+,$");
+	}
+	
     /**
      * Erzeugt ein neues Geldbetrag-Objekt aus einem String
      * Wird keine Nachkommastelle angegeben, so wird der Wert als ganzzahliger 
@@ -220,7 +232,7 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     {
     	assert istGueltigerStr(gstr) == true : "Vorbedingung verletzt: istGueltigerStr(gstr) == true";
     	
-    	if(nurZiffern(gstr))
+    	if(nurZiffern(gstr) || hatKeineNachkommaStelle(gstr))
     	{
     		gstr += "00";
     	}
@@ -228,7 +240,6 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     	{
     		gstr += "0";
     	}
-    	
     	return new Geldbetrag(Integer.parseInt(gstr.replaceAll(",", "")));
     }
 }

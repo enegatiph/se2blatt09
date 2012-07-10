@@ -143,6 +143,12 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
     private void reagiereAufEingabe(KeyEvent e)
     {
         String eingabe = _ui.getGegebenTextfeld().getText();
+        if ( eingabe.equals("") )//TODO fuehrende 0 entfernen
+        {
+        	_ui.getGegebenTextfeld().setText("0");
+        	eingabe = _ui.getGegebenTextfeld().getText();
+        }
+        	
         setzeNeuenStatus(eingabe);
         int key = e.getKeyCode();
         if (_ui.getGeldErhaltenButton().isEnabled() && key == KeyEvent.VK_ENTER)
@@ -233,6 +239,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
             long betrag = Long.valueOf(eingabe);//TODO GB
             result = ((Integer.MIN_VALUE <= betrag) && (betrag <= Integer.MAX_VALUE));
         }*/
+;
         return Geldbetrag.istGueltigerStr(eingabe);
     }
 
