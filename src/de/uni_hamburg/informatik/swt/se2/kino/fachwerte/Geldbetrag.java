@@ -32,6 +32,12 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		_betrag = betrag;
 	}
 	
+	/**
+	 * Liefert den Geldbetrag in Cents als Ganzzahl zurueck.
+	 * Ist public damit sie bei anderen Geldbetragobjekt als "this" aufgerufen 
+	 * werden kann
+	 * 
+	 */
 	public int toInt()
 	{
 		return _betrag;
