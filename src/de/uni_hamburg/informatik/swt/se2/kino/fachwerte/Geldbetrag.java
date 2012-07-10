@@ -9,7 +9,6 @@ package de.uni_hamburg.informatik.swt.se2.kino.fachwerte;
 public final class Geldbetrag implements Comparable<Geldbetrag>
 {
 	final int _betrag;
-	
 	// es sollten noch exceptions abgefangen werden wenn bspw. 
 	// eine zahl zu groß fuer nen Integer ist.
 
@@ -156,4 +155,20 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		
 		return String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma));
 	}
+	
+	 
+    /**
+     * Erzeugt ein neues Geldbetrag-Objekt aus einem String
+     * 
+     * @param: gstr
+     *   Der zu "konvertierende" String
+     * @require: 
+     *   istGueltierStr(gstr) == true
+     * @ensure:
+     *   result != null
+     */
+    public static Geldbetrag parse(String gstr)
+    {
+    	return new Geldbetrag();
+    }
 }
