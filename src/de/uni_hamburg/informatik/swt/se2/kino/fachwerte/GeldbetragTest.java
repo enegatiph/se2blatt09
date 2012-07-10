@@ -66,7 +66,6 @@ public class GeldbetragTest {
         assertEquals("-15,00", new Geldbetrag(-1500).toString());
 	}
 
-	/*
 	@Test
 	public void testeParse()
 	{
@@ -92,7 +91,7 @@ public class GeldbetragTest {
 		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-99"));
 		// test mit 1, 2, und 0 kommastellen
 	}
-	
+	/*
 	@Test(expected=IllegalArgumentException.class)
 	public void testeKonstruktorParse()
 	{

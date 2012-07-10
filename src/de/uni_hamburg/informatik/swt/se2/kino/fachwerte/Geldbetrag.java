@@ -156,7 +156,26 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma));
 	}
 	
-	 
+	/**
+	 * Pruft ob ein gueltiger String vorliegt welcher einen Geldbetrag 
+	 * repräsentiert.
+	 * Krieterien:
+	 *    - Vorzeichen: ohne, "-" oder "+"
+	 *    - Ziffernfolge: 1 - 7 Zeichen
+	 *    - Komma (optional): ","
+	 *    - Ziffernfolge: 0 - 2 Zeichen
+	 *    - nach dem ersten Auftauchen eines gueltigen Zeichens, darf 
+	 *      kein Leerzeichen auftreten.
+	 * @param: g
+	 *    Der zu prüfende String
+	 * @require:
+	 *    g != null
+	 */
+	private static boolean istGueltigerStr(String g)
+	{
+		return g.matches("((-|\\+)?\\d{1,7})(,(\\d{0,2}))?");
+	}
+	
     /**
      * Erzeugt ein neues Geldbetrag-Objekt aus einem String
      * 
@@ -169,6 +188,8 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
      */
     public static Geldbetrag parse(String gstr)
     {
-    	return new Geldbetrag();
+    	assert istGueltigerStr(gstr) == true : "Vorbedingung verletzt: istGueltigerStr(gstr) == true";
+    	
+    	return new Geldbetrag(Integer.parseInt(gstr.replaceAll(",", "")));
     }
 }
