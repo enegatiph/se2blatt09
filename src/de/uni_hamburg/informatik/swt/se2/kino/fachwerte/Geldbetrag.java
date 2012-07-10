@@ -173,11 +173,36 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	 */
 	private static boolean istGueltigerStr(String g)
 	{
-		return g.matches("((-|\\+)?\\d{1,7})(,(\\d{0,2}))?");
+		return g.matches("^((-|\\+)?\\d{1,7})(,(\\d{0,2}))?$");
+	}
+	
+	/**
+	 * Überprüft ob ein String ausschließlich aus Ziffern besteht.
+	 * (Vorzeichen ist erlaubt)
+	 * @param s:
+	 *    zu prüfender String
+	 */
+	private static boolean nurZiffern(String s)
+	{
+		return s.matches("^(-|\\+)?\\d+$");
+	}
+	
+	/**
+	 * Überprüft ob ein String genau eine Ziffer nach einem Komma hat.
+	 * (Vorzeichen ist erlaubt)
+	 *  
+	 * @param s:
+	 *    zu prüfender String
+	 */
+	private static boolean hatEineKommastelle(String s)
+	{
+		return s.matches("^(-|\\+)?\\d+,\\d{1}$");
 	}
 	
     /**
      * Erzeugt ein neues Geldbetrag-Objekt aus einem String
+     * Wird keine Nachkommastelle angegeben, so wird der Wert als ganzzahliger 
+     * Euroanteil gewertet.
      * 
      * @param: gstr
      *   Der zu "konvertierende" String
@@ -190,11 +215,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     {
     	assert istGueltigerStr(gstr) == true : "Vorbedingung verletzt: istGueltigerStr(gstr) == true";
     	
-    	if(!hatKomma(gstr))
+    	if(nurZiffern(gstr))
     	{
     		gstr += "00";
     	}
-    	else if(!hatEineKommastelle(gstr))
+    	else if(hatEineKommastelle(gstr))
     	{
     		gstr += "0";
     	}

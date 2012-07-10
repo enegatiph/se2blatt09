@@ -74,12 +74,12 @@ public class GeldbetragTest {
 		assertEquals(new Geldbetrag(1500), Geldbetrag.parse("15"));
 		assertEquals(new Geldbetrag(7), Geldbetrag.parse("0,07"));
 		assertEquals(new Geldbetrag(7), Geldbetrag.parse("00,07"));
-		assertEquals(new Geldbetrag(7), Geldbetrag.parse("07"));
-		assertEquals(new Geldbetrag(7), Geldbetrag.parse("7"));
+		assertEquals(new Geldbetrag(700), Geldbetrag.parse("07"));
+		assertEquals(new Geldbetrag(700), Geldbetrag.parse("7"));
 		assertEquals(new Geldbetrag(99), Geldbetrag.parse("0,99"));
 		assertEquals(new Geldbetrag(99), Geldbetrag.parse("00,99"));
-		assertEquals(new Geldbetrag(99), Geldbetrag.parse("099"));
-		assertEquals(new Geldbetrag(99), Geldbetrag.parse("99"));
+		assertEquals(new Geldbetrag(9900), Geldbetrag.parse("099"));
+		assertEquals(new Geldbetrag(9900), Geldbetrag.parse("99"));
 		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0"));
 		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0000000"));
 		assertEquals(new Geldbetrag(0), Geldbetrag.parse("0,0"));
@@ -87,8 +87,8 @@ public class GeldbetragTest {
 		assertEquals(new Geldbetrag(0), Geldbetrag.parse("-0"));
 		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-0,99"));
 		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-00,99"));
-		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-099"));
-		assertEquals(new Geldbetrag(-99), Geldbetrag.parse("-99"));
+		assertEquals(new Geldbetrag(-9900), Geldbetrag.parse("-099"));
+		assertEquals(new Geldbetrag(-9900), Geldbetrag.parse("-99"));
 		// test mit 1, 2, und 0 kommastellen
 	}
 	/*
