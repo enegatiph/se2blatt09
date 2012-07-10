@@ -10,7 +10,7 @@ import org.junit.Test;
 public class GeldbetragTest {
 
 // Material Vorstellung arbeitet mit Geldbetrag
-// regex: (-?\\d{1,7})(,(\\d{0,2}))?
+// regex: ((-|+)?\\d{1,7})(,(\\d{0,2}))?
 // wenn oder {1,8} und wenn die zahl zu gross ist gleich Integer.MAX_VALUE setzen
 // methode istgueltig
 
@@ -52,7 +52,6 @@ public class GeldbetragTest {
         assertEquals( new Geldbetrag(7500), g1.mul(5));
 	}
 	
-	/*
 
 	@Test
 	public void testeToString()
@@ -60,13 +59,14 @@ public class GeldbetragTest {
         assertEquals("15,00", new Geldbetrag(1500).toString());
         assertEquals("0,07", new Geldbetrag(7).toString());
         assertEquals("0,99", new Geldbetrag(99).toString());
-        assertEquals("0", new Geldbetrag(0).toString());
-        assertEquals("0", new Geldbetrag(-0).toString());
+        assertEquals("0,00", new Geldbetrag(0).toString());
+        assertEquals("0,00", new Geldbetrag(-0).toString());
         assertEquals("-0,99", new Geldbetrag(-99).toString());
         assertEquals("-0,07", new Geldbetrag(-7).toString());
         assertEquals("-15,00", new Geldbetrag(-1500).toString());
 	}
 
+	/*
 	@Test
 	public void testeParse()
 	{

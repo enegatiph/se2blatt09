@@ -38,9 +38,19 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 		return _betrag;
 	}
 	
+	/**
+	 * Vergleicht zwei Geldbeträge.
+	 * 
+	 * @param: g
+	 *    Geldbetrag welcher mit diesem verrechnet werden soll.
+	 * @reqiure:
+	 *   g != null
+	 */
 	@Override
 	public int compareTo(Geldbetrag g)
 	{
+		assert g != null : "Vorbedingung verletzt g != null";
+		
 		return _betrag - g.toInt();
 	}
 	
@@ -101,10 +111,49 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	 * @param: a
 	 *   Faktor mit welchem dieser Geldbetrag verrechnet werden soll.
 	 * @ensure:
-	 *    new Geldbetrag(a * this.toInt()).equals(a * this.sub(g));
+	 *    new Geldbetrag(a * this.toInt()).equals(this.mul(a));
 	 */
 	public Geldbetrag mul(int a)
 	{
 		return new Geldbetrag(a * _betrag);
+	}
+	
+	/**
+	 * Erstellt eine Repräsentation des Geldbetrages als formatierten String
+	 * 
+	 * @ensure
+	 *   result != null
+	 */
+	@Override
+	public String toString()
+	{
+		String vorzeichen = "";
+		String vorkomma = "";
+		String nachkomma = "";
+		String betragstr = "";
+		int abs = _betrag;
+		
+		if(_betrag < 0)
+		{
+			vorzeichen = "-";
+			abs *= (-1);
+		}
+		
+		
+		betragstr = new Integer(abs).toString();
+		
+		if(betragstr.length() > 2)
+		{
+			vorkomma = betragstr.substring(0, (betragstr.length() - 2));
+			nachkomma = betragstr.substring((betragstr.length() - 2), betragstr.length());
+		}
+		else
+		{
+			vorkomma = "0";
+			nachkomma = betragstr;
+		}
+		System.out.printf("%s", String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma)) + "\n");
+		
+		return String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma));
 	}
 }
