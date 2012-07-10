@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Datum;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.FSK;
+import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Geldbetrag;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Platz;
 import de.uni_hamburg.informatik.swt.se2.kino.fachwerte.Uhrzeit;
 
@@ -84,7 +85,7 @@ public class VorstellungTest
         s.add(new Platz(5, 6));
         s.add(new Platz(5, 7));
 
-        assertEquals(3690, v.getPreisFuerPlaetze(s));
+        assertEquals(new Geldbetrag(3690), v.getPreisFuerPlaetze(s));
     }
 
     @Test
