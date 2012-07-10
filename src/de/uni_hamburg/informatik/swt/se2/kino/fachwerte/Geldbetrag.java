@@ -151,7 +151,6 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 			vorkomma = "0";
 			nachkomma = betragstr;
 		}
-		System.out.printf("%s", String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma)) + "\n");
 		
 		return String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma));
 	}

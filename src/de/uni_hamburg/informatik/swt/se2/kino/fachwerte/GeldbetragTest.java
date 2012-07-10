@@ -15,7 +15,7 @@ public class GeldbetragTest {
 // methode istgueltig
 
 // DONE 1. tests verbessern
-// 2. klasse verbessern
+// DONE 2. klasse verbessern
 // 3. refactoring
 	
 	@Test
@@ -91,6 +91,7 @@ public class GeldbetragTest {
 		assertEquals(new Geldbetrag(-9900), Geldbetrag.parse("-99"));
 		// test mit 1, 2, und 0 kommastellen
 	}
+	
 	/*
 	@Test(expected=IllegalArgumentException.class)
 	public void testeKonstruktorParse()
@@ -98,7 +99,8 @@ public class GeldbetragTest {
 		Geldbetrag.parse("Peter");
 		
 	}
-	
+	*/
+	/*
 	@Test
 	public void testeAntiRoundhouseKick()
 	{
