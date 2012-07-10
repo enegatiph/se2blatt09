@@ -176,7 +176,7 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	 * @require:
 	 *    g != null
 	 */
-	private static boolean istGueltigerStr(String g)
+	public static boolean istGueltigerStr(String g)
 	{
 		return g.matches("^((-|\\+)?\\d{1,7})(,(\\d{0,2}))?$");
 	}

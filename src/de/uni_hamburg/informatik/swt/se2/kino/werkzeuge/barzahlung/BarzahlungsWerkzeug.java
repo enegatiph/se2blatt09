@@ -51,9 +51,9 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
      * Startet den Barzahlungsvorgang. Die UI wird angezeigt. Der Programmfluss
      * kehrt erst nach dem Beenden des Bezahlvorgangs an den Aufrufer zurück.
      */
-    public void fuehreBarzahlungDurch(Geldbetrag preis) // TODO GB
+    public void fuehreBarzahlungDurch(Geldbetrag preis) // DONE GB
     {
-        _preis = preis; // TODO GB
+        _preis = preis; // DONE GB
         setzeAnfangsstatus();
         _ui.zeigeAn();
     }
@@ -201,7 +201,8 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
         if (istGueltig(eingabe))
         {
             setzeFehlermarkierung(false);
-            Geldbetrag eingabeBetrag = new Geldbetrag(Integer.valueOf(eingabe));
+            //Geldbetrag eingabeBetrag = new Geldbetrag(Integer.valueOf(eingabe));
+            Geldbetrag eingabeBetrag = Geldbetrag.parse(eingabe); //DONE
             setzeRestbetrag(eingabeBetrag);
             setzeOKButtonStatus(eingabeBetrag);
         }
@@ -226,13 +227,13 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
     public boolean istGueltig(String eingabe)
     {
         assert eingabe != null : "Vorbedingung verletzt: eingabe != null";
-        boolean result = eingabe.matches("-?[0-9]{1,10}");
+        /*boolean result = eingabe.matches("-?[0-9]{1,10}");//DONE scheisse
         if (result)
         {
-            long betrag = Long.valueOf(eingabe);
+            long betrag = Long.valueOf(eingabe);//TODO GB
             result = ((Integer.MIN_VALUE <= betrag) && (betrag <= Integer.MAX_VALUE));
-        }
-        return result;
+        }*/
+        return Geldbetrag.istGueltigerStr(eingabe);
     }
 
     /**
