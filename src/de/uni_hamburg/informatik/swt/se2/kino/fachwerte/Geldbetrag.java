@@ -190,6 +190,15 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     {
     	assert istGueltigerStr(gstr) == true : "Vorbedingung verletzt: istGueltigerStr(gstr) == true";
     	
+    	if(!hatKomma(gstr))
+    	{
+    		gstr += "00";
+    	}
+    	else if(!hatEineKommastelle(gstr))
+    	{
+    		gstr += "0";
+    	}
+    	
     	return new Geldbetrag(Integer.parseInt(gstr.replaceAll(",", "")));
     }
 }
