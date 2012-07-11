@@ -126,32 +126,15 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	public String toString()
 	{
 		String vorzeichen = "";
-		String vorkomma = "";
-		String nachkomma = "";
-		String betragstr = "";
-		int abs = _betrag;
+		int vorkomma = Math.abs( _betrag / 100);
+		int nachkomma = Math.abs( _betrag % 100 );
 		
-		if(_betrag < 0)
+		if (_betrag < 0)
 		{
 			vorzeichen = "-";
-			abs *= (-1);
 		}
-		
-		
-		betragstr = new Integer(abs).toString();
-		
-		if(betragstr.length() > 2)
-		{
-			vorkomma = betragstr.substring(0, (betragstr.length() - 2));
-			nachkomma = betragstr.substring((betragstr.length() - 2), betragstr.length());
-		}
-		else
-		{
-			vorkomma = "0";
-			nachkomma = betragstr;
-		}
-		
-		return String.format(vorzeichen + vorkomma + "," + "%02d", Integer.parseInt(nachkomma));
+			
+		return String.format("%s%d,%02d", vorzeichen, vorkomma, nachkomma);
 	}
 	
 	/**
