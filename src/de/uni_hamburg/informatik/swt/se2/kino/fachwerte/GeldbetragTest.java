@@ -18,15 +18,6 @@ public class GeldbetragTest {
 // DONE 2. klasse verbessern
 // 3. refactoring
 	
-	@Test
-	public void testeCompareTo()
-	{
-		Geldbetrag g1 = new Geldbetrag(Integer.MIN_VALUE);
-		Geldbetrag g2 = new Geldbetrag(Integer.MAX_VALUE);
-        assertTrue(g1.compareTo(g2) > 0);
-        assertTrue(g2.compareTo(g1) < 0);
-        assertTrue(g1.compareTo(g1) == 0);
-	}
 	
 	@Test
 	public void testeAdd()
@@ -92,6 +83,28 @@ public class GeldbetragTest {
 		assertEquals(new Geldbetrag(-9900), Geldbetrag.parse("-99"));
 		// test mit 1, 2, und 0 kommastellen
 	}
+
+	@Test
+	public void testeIstMoeglich()
+	{
+		Geldbetrag g1 = new Geldbetrag(Integer.MIN_VALUE);
+		Geldbetrag g2 = new Geldbetrag(Integer.MAX_VALUE);
+		assertFalse(g2.istMulMoeglich(Integer.MAX_VALUE));
+		assertFalse(g2.istAddMoeglich(g2));
+		assertFalse(g2.istSubMoeglich(g1));
+		assertFalse(g1.istSubMoeglich(g2));
+	}
+
+	@Test
+	public void testeCompareTo()
+	{
+		Geldbetrag g1 = new Geldbetrag(Integer.MIN_VALUE);
+		Geldbetrag g2 = new Geldbetrag(Integer.MAX_VALUE);
+		assertTrue(g1.compareTo(g2) > 0);
+		assertTrue(g2.compareTo(g1) < 0);
+		assertTrue(g1.compareTo(g1) == 0);
+	}
+	
 	
 	/*
 	@Test(expected=IllegalArgumentException.class)

@@ -33,7 +33,7 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
 {
 
     private BarzahlungsWerkzeugUI _ui;
-    private Geldbetrag _preis; //TODO zu gelbetrag
+    private Geldbetrag _preis; //DONE zu gelbetrag
     private boolean _barzahlungErfolgreich;
 
     /**
@@ -143,12 +143,12 @@ public class BarzahlungsWerkzeug extends BeobachtbaresSubWerkzeug
     private void reagiereAufEingabe(KeyEvent e)
     {
         String eingabe = _ui.getGegebenTextfeld().getText();
-        if ( eingabe.equals("") )//TODO fuehrende 0 entfernen
+        if ( eingabe.equals(""))//TODO fuehrende 0 entfernen
         {
         	_ui.getGegebenTextfeld().setText("0");
         	eingabe = _ui.getGegebenTextfeld().getText();
         }
-        	
+        
         setzeNeuenStatus(eingabe);
         int key = e.getKeyCode();
         if (_ui.getGeldErhaltenButton().isEnabled() && key == KeyEvent.VK_ENTER)

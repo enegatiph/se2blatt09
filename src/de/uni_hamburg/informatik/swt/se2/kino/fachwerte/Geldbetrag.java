@@ -33,17 +33,6 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	}
 	
 	/**
-	 * Liefert den Geldbetrag in Cents als Ganzzahl zurueck.
-	 * Ist public damit sie bei anderen Geldbetragobjekt als "this" aufgerufen 
-	 * werden kann
-	 * 
-	 */
-	public int toInt()
-	{
-		return _betrag;
-	}
-	
-	/**
 	 * Vergleicht zwei Geldbeträge.
 	 * 
 	 * @param: g
@@ -55,15 +44,17 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	public int compareTo(Geldbetrag g)
 	{
 		assert g != null : "Vorbedingung verletzt g != null";
+		assert istSubMoeglich(g) : "Vorbedingung veletzt istSubMoeglich(g)";
 		
-		return _betrag - g.toInt();
+		return _betrag - g._betrag;
 	}
+	
 	
 	@Override
 	public boolean equals(Object g)
 	{
 		boolean result = false;
-		if((g instanceof Geldbetrag) && (_betrag == ((Geldbetrag) g).toInt()))
+		if((g instanceof Geldbetrag) && (_betrag == ((Geldbetrag) g)._betrag))
 		{
 			result = true;
 		}
@@ -84,13 +75,14 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	 * @reqiure:
 	 *   g != null
 	 * @ensure:
-	 *    new Geldbetrag(this.toInt() + g.toInt()).equals(this.add(g));
+	 *    new Geldbetrag(this._betrag + g._betrag).equals(this.add(g));
 	 */
 	public Geldbetrag add(Geldbetrag g)
 	{
+		assert istAddMoeglich(g) : "Vorbedingung veletzt istAddMoeglich(g)";
 		assert g != null : "Vorbedingung veletzt g != null";
 		
-		return new Geldbetrag(_betrag + g.toInt());
+		return new Geldbetrag(_betrag + g._betrag);
 	}
 	
 	/**
@@ -101,13 +93,13 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	 * @reqiure:
 	 *   g != null
 	 * @ensure:
-	 *    new Geldbetrag(this.toInt() - g.toInt()).equals(this.sub(g));
+	 *    new Geldbetrag(this._betrag - g._betrag).equals(this.sub(g));
 	 */
 	public Geldbetrag sub(Geldbetrag g)
 	{
 		assert g != null : "Vorbedingung veletzt g != null";
-		
-		return new Geldbetrag(_betrag - g.toInt());
+		assert istSubMoeglich(g) : "Vorbedingung veletzt istSubMoeglich(g)";
+		return new Geldbetrag(_betrag - g._betrag);
 	}
 	
 	/**
@@ -116,10 +108,11 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
 	 * @param: a
 	 *   Faktor mit welchem dieser Geldbetrag verrechnet werden soll.
 	 * @ensure:
-	 *    new Geldbetrag(a * this.toInt()).equals(this.mul(a));
+	 *    new Geldbetrag(a * this._betrag).equals(this.mul(a));
 	 */
 	public Geldbetrag mul(int a)
 	{
+		assert istMulMoeglich(a) : "Vorbedingung veletzt istMulMoeglich(g)";
 		return new Geldbetrag(a * _betrag);
 	}
 	
@@ -241,5 +234,45 @@ public final class Geldbetrag implements Comparable<Geldbetrag>
     		gstr += "0";
     	}
     	return new Geldbetrag(Integer.parseInt(gstr.replaceAll(",", "")));
+    	
+    	
     }
+    
+	/**
+	 * Überprüft ob Addieren möglich ist (Wegen Werteberreichs Überlauf)
+	 * @param betrag:
+	 *    zu prüfender Betrag
+	 */
+    public boolean istAddMoeglich(Geldbetrag betrag)
+    {
+    	long i= betrag._betrag;
+    	i+= _betrag;
+    	return (i <= Integer.MAX_VALUE && i>= Integer.MIN_VALUE);
+    }
+    
+	/**
+	 * Überprüft ob Subtrahieren möglich ist (Wegen Werteberreichs Überlauf)
+	 * @param betrag:
+	 *    zu prüfender Betrag
+	 */
+    public boolean istSubMoeglich(Geldbetrag betrag)
+    {
+    	long i= _betrag;
+    	i-= betrag._betrag;
+    	return (i <= Integer.MAX_VALUE && i>= Integer.MIN_VALUE);
+    }
+    
+	/**
+	 * Überprüft ob Multiplizieren möglich ist (Wegen Werteberreichs Überlauf)
+	 * @param n:
+	 *    zu prüfender Int
+	 */
+    public boolean istMulMoeglich(int n)
+    {
+    	long i= _betrag;
+    	i= i*n;
+    	return (i <= Integer.MAX_VALUE && i>= Integer.MIN_VALUE);
+    }
+    
+    
 }
